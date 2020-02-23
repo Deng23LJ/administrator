@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="uTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.AdministratorMapper">
+    <select id="adminLogin" parameterType="map" resultType="Administrator">
+        select * from administrator where adminName = #{adminName} and adminPassword = #{adminPassword}
+    </select>
+
+    <insert id="adminRegister" parameterType="map">
+        insert into administrator values (null,#{adminName},#{adminPassword},#{adminGrade})
+    </insert>
+
+</mapper>
+
