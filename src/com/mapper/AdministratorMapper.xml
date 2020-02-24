@@ -6,8 +6,12 @@
     </select>
 
     <insert id="adminRegister" parameterType="map">
-        insert into administrator values (null,#{adminName},#{adminPassword},#{adminGrade})
+        insert into administrator values (null,#{adminName},#{adminPassword},null)
     </insert>
+
+    <select id="adminNameCheck" parameterType="java.lang.String" resultType="java.lang.String">
+        select adminName from administrator where adminName = #{adminName}
+    </select>
 
 </mapper>
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Kodinger">
+    <title>管理员注册</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/my-login.css">
+</head>
+<body class="my-login-page">
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
+                <div class="brand">
+                    <img src="img/logo.jpg">
+                </div>
+                <div class="card fat">
+                    <div class="card-body">
+                        <h4 class="card-title">注册</h4>
+                        <form method="POST">
+
+                            <div class="form-group">
+                                <label for="adminName">账号</label>
+                                <input id="adminName" type="text" class="form-control" name="adminName" required
+                                       autofocus>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="adminPassword">密码</label>
+                                <input id="adminPassword" type="password" class="form-control" name="adminPassword"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="authorizationCode">授权码</label>
+                                <input id="authorizationCode" type="text" class="form-control" name="authorizationCode"
+                                       required data-eye>
+                            </div>
+
+                            <br>
+                            <br>
+
+
+                            <div class="form-group no-margin">
+                                <button type="submit" id="register" class="btn btn-primary btn-block">
+                                    注册
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="footer">
+                    Copyright &copy; Your Company 2020 - More Templates
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery-2.1.0.min.js"></script>
+
+<script type="text/javascript">
+
+    //注册检查
+    // $("adminName").blur(function () {
+    //
+    //     $.post(
+    //         "adminNameCheck.do",
+    //         {"adminName":adminName},
+    //         function (data) {
+    //             alert(data)
+    //         }
+    //     )
+    // })
+
+    // //授权码的检测
+    // $("authorizationCode").blur(function (code) {
+    //     if (code != "3308"){
+    //         alert("授权码错误")
+    //         return
+    //     }else{
+    //         alert("授权码正确")
+    //     }
+    //
+    // })
+
+    //注册操作
+    $("#register").click(function () {
+        var adminName = $("#adminName").val();
+        var adminPassword = $("#adminPassword").val();
+        $.post(
+            "registerAdmin.do",
+            {"adminName":adminName,"adminPassword":adminPassword},
+            function (data) {
+                alert(data)
+            },"text")
+    })
+</script>
+
+
+</body>
+</html>
