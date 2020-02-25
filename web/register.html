@@ -63,39 +63,53 @@
 
 <script type="text/javascript">
 
-    //注册检查
-    // $("adminName").blur(function () {
-    //
-    //     $.post(
-    //         "adminNameCheck.do",
-    //         {"adminName":adminName},
-    //         function (data) {
-    //             alert(data)
-    //         }
-    //     )
-    // })
 
-    // //授权码的检测
-    // $("authorizationCode").blur(function (code) {
-    //     if (code != "3308"){
-    //         alert("授权码错误")
-    //         return
-    //     }else{
-    //         alert("授权码正确")
-    //     }
-    //
-    // })
+    //注册检查
+    $("#adminName").blur(function () {
+        var Name = $("#adminName").val();
+        if (Name == "") {
+            return
+        } else {
+            $.post(
+                "adminNameCheck.do",
+                {"adminName": Name},
+                function (data) {
+                    if (data != "") {
+                        alert("名字被占用！")
+                        return
+                    }
+                }, "json")
+
+        }
+
+    })
+
+    //授权码的检测
+    $("#authorizationCode").blur(function () {
+        var authorization = $("#authorizationCode").val()
+        if (authorization != "3308") {
+            alert("授权码错误")
+            return
+        }
+
+    })
 
     //注册操作
     $("#register").click(function () {
         var adminName = $("#adminName").val();
         var adminPassword = $("#adminPassword").val();
-        $.post(
-            "registerAdmin.do",
-            {"adminName":adminName,"adminPassword":adminPassword},
-            function (data) {
-                alert(data)
-            },"text")
+        if (adminName == "" || adminPassword == "") {
+            alert("请填写完整")
+        } else {
+            $.post(
+                "registerAdmin.do",
+                {"adminName": adminName, "adminPassword": adminPassword},
+                function (data) {
+                    alert("成功")
+                    window.location.href = "login.html"
+                }, "json")
+        }
+
     })
 </script>
 

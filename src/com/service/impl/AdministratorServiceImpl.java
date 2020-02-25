@@ -20,18 +20,24 @@ public class AdministratorServiceImpl implements AdministratorService {
 
     @Override
     public Administrator adminLogin(String adminName, String adminPassword) throws Exception {
-        Map<String,Object> map = new HashMap<>();
-        map.put("adminName",adminName);
-        map.put("adminPassword",adminPassword);
+        Map<String, Object> map = new HashMap<>();
+        map.put("adminName", adminName);
+        map.put("adminPassword", adminPassword);
         return administratorMapper.adminLogin(map);
     }
 
     @Override
-    public void adminRegister(String adminName, String adminPassword) throws Exception {
-        Map<String,Object> map = new HashMap<>();
-        map.put("adminName",adminName);
-        map.put("adminPassword",adminPassword);
-        administratorMapper.adminRegister(map);
+    public int adminRegister(String adminName, String adminPassword) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        map.put("adminName", adminName);
+        map.put("adminPassword", adminPassword);
+        try {
+            administratorMapper.adminRegister(map);
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
