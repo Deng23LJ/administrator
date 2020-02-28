@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="uTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CorperateAffairsMapper">
+    <update id="sectionA" parameterType="map">
+        update corperateAffairs set sectionA = #{sectionA} where legalPerson = #{legalPerson}
+    </update>
+    <update id="sectionB" parameterType="map">
+        update corperateAffaird set sectionB = #{sectionB}   where legalPerson = #{legalPerson};
+    </update>
+    <select id="findAllCorperateAffairs" resultType="CorperateAffairs">
+        select * from corperateAffairs
+    </select>
+</mapper>

@@ -25,7 +25,7 @@ public class AdministratorController {
     public int adminLogin(HttpSession session, String adminName, String adminPassword) throws Exception {
         Administrator login = administratorService.adminLogin(adminName, adminPassword);
         if (login != null) {
-//              session.setAttribute("name",LoginResult.getAdminName());
+            session.setAttribute("name",login.getAdminName());
             return 1;
         } else {
             return 0;

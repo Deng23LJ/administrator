@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="uTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.PersonAffairsMapper">
+    <update id="visaDealA" parameterType="map">
+        update personAffairs set departmentA = #{departmentAAudit} where username = #{username}
+    </update>
+    <update id="viasDealB" parameterType="map">
+        update personAffairs set departmentB = #{departmentBAudiu} where username = #{username}
+    </update>
+
+    <select id="findAllPersonAffairs" resultType="PersonAffairs" parameterType="map">
+        select * from personAffairs;
+    </select>
+
+    <select id="findAllPersonAffairsCount" resultType="int">
+        select count(*) from personAffairs;
+    </select>
+</mapper>
