@@ -25,7 +25,9 @@ public class AdministratorController {
     public int adminLogin(HttpSession session, String adminName, String adminPassword) throws Exception {
         Administrator login = administratorService.adminLogin(adminName, adminPassword);
         if (login != null) {
-            session.setAttribute("name",login.getAdminName());
+            session.setAttribute("name", login.getAdminName());
+            session.setAttribute("department", login.getAdminDepartment());
+            session.setAttribute("grade",login.getAdminGrade());
             return 1;
         } else {
             return 0;
@@ -36,7 +38,7 @@ public class AdministratorController {
     @RequestMapping("registerAdmin.do")
     public int adminRegister(String adminName, String adminPassword) throws Exception {
         int regist = administratorService.adminRegister(adminName, adminPassword);
-        System.out.println("service+"+regist);
+        System.out.println("service+" + regist);
         if (regist == 1) {
             return 1;
         } else {

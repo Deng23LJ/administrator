@@ -9,10 +9,31 @@
     </update>
 
     <select id="findAllPersonAffairs" resultType="PersonAffairs" parameterType="map">
-        select * from personAffairs;
+        select * from personAffairs
     </select>
 
     <select id="findAllPersonAffairsCount" resultType="int">
-        select count(*) from personAffairs;
+        select count(*) from personAffairs
     </select>
+
+    <select id="DepartmentAfindUnDealpersonAffairs" resultType="PersonAffairs">
+        select * from personAffairs where sectionA = '待审'
+    </select>
+
+    <update id="agreeUserServiceA" parameterType="int">
+        update personAffairs set sectionA = '通过' where id = #{id}
+    </update>
+
+
+    <select id="DepartmentBfindUnDealpersonAffairs" resultType="PersonAffairs">
+        select * from personAffairs where sectionB = '待审' and sectionA = '通过';
+    </select>
+
+    <update id="agreeUserServiceB" parameterType="int">
+        update personAffairs set sectionB = '通过' where id = #{id}
+    </update>
+
+
+
+
 </mapper>

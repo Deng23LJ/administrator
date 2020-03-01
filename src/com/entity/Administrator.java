@@ -12,4 +12,5 @@ public class Administrator {
     private String adminName;
     private String adminPassword;
     private int adminGrade;
+    private String adminDepartment;
 }
